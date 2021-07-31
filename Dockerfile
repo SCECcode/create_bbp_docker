@@ -15,7 +15,7 @@ RUN yum -y update
 RUN yum -y install yum-utils
 RUN yum -y groupinstall "Development Tools"
 # the groupinstall includes autoconf automake, gcc gcc-c++ make libtool
-RUN yum -y install -y util-linux fftw-devel which
+RUN yum -y install -y util-linux gcc-8.3.0 fftw-devel which
 
 # Setup owners
 RUN groupadd scec
