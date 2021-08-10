@@ -1,10 +1,3 @@
-# Docker git repos
-1. [UCVM Docker Wiki](https://github.com/sceccode/ucvm_docker/wiki)
-2. [UCVM Docker README.md](https://github.com/sceccode/ucvm_docker)
-
-3. [BBP Docker Wiki](https://github.com/pjmaechling/bbp_docker/wiki)
-4. [BBP Docker README.md](https://github.com/sceccode/bbp_docker)
-
 # bbp_docker
 tools for evaluating a dockerized version of the SCEC Broadband Platform
 bbp_docker: These codes create and run a dockerized version of the python3 version.
@@ -74,3 +67,11 @@ On host system, user invokes docker run. Expectation is that there is a subdirec
 ./target is mounted as /app/bbp_data.
 Input files can be stored there.
 Output results will be written there
+
+# Docker git repos
+1. [UCVM Docker Wiki](https://github.com/sceccode/ucvm_docker/wiki)
+2. [UCVM Docker README.md](https://github.com/sceccode/ucvm_docker)
+
+3. [BBP Docker Wiki](https://github.com/sceccode/bbp_docker/wiki)
+4. [BBP Docker README.md](https://github.com/sceccode/bbp_docker)
+5. 
