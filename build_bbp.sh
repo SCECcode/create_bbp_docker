@@ -1,2 +1,2 @@
 #!/bin/sh
-docker build . -f Dockerfile -t bbp_python3:07301938
+docker build . -f Dockerfile -t bbp_min:08131452
