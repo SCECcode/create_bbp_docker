@@ -17,10 +17,10 @@ ENV PYTHONPATH=/app/bbp/bbp/comps:/app/bbp/bbp/comps/PySeismoSoil:${PYTHONPATH}
 ENV PATH="/home/bbp/anaconda3/bin:/app/bbp/bbp/comps:/app/bbp/bbp/utils/batch:${PATH}"
 #
 RUN yum -y update 
-RUN yum -y install yum-utils
+#RUN yum -y install yum-utils
 RUN yum -y groupinstall "Development Tools"
 # the groupinstall includes autoconf automake, gcc gcc-c++ make libtool
-RUN yum -y install gcc-gfortran fftw-devel which
+RUN yum -y install yum-utils gcc-gfortran fftw-devel which
 
 # Setup owners
 # Documents say this groupadd is needed build on linux, but not on mac
