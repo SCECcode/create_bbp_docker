@@ -36,7 +36,7 @@ RUN bash Anaconda3-2021.05-Linux-x86_64.sh < anaconda_inputs.txt
 RUN rm /home/bbp/Anaconda3-2021.05-Linux-x86_64.sh
 RUN conda install -c anaconda pyproj
 # Add below due to warning use error to downgrade matplotlib
-RUN pip install matplotlib==3.2
+# RUN pip install matplotlib==3.2
 #
 WORKDIR /app
 COPY --chown=bbp:scec bbp/ ./bbp
