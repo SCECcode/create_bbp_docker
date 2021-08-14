@@ -1,6 +1,11 @@
 # Create bbp docker image
 FROM centos:8
 ENV LANG=C.UTF-8 LC_ALL=C.UTF-8
+
+# Define these parameters to support building and deploying on EC2 so user is not root
+ARG USER_ID
+ARG GROUP_ID
+
 LABEL "maintainer"="Philip Maechling <maechlin@usc.edu>" "appname"="bbp"
 #
 # Setup path for installation of bbp into /app/bbp
@@ -18,8 +23,9 @@ RUN yum -y groupinstall "Development Tools"
 RUN yum -y install gcc-gfortran fftw-devel which
 
 # Setup owners
-RUN groupadd scec
-RUN useradd -ms /bin/bash -G scec bbp
+# Documents say this groupadd is needed build on linux, but not on mac
+RUN groupadd --non-unique --gid $GROUP_ID scec
+RUN useradd -ms /bin/bash -G scec --uid $USER_ID bbp
 USER bbp
 
 #Install python3
