@@ -1,14 +1,13 @@
-# bbp_docker
-This repo contains tools used when evaluating a dockerized version of the SCEC Broadband Platform
-bbp_docker: These codes create and run a dockerized version of the bbp,
+# Overview of bbp_docker Repo
+This repo contains tools to create a dockerized version of the SCEC Broadband Platform. The scripts, codes, configuration files in this repo create and run a dockerized version of the BBP software that is posted in SCEC github repo: [https://github.com/sceccode/bbp]
 
-# Overview of Building a new Docker image from the BBP.
-## Host root on Development Computer
+# Overview of Building a new Docker image from the BBP
+## Select Working Directory on Development Computer
 On a mac start at:
 /Users/maechlin
 
 ## Retrieve this repo. This repo contains bbp docker tools
-git clone https://github.com/pjmaechling/bbp_docker.git
+git clone https://github.com/sceccode/bbp_docker.git
 
 This creates a directory call bbp_docker. On my Mac as:
 /Users/maechlin/bbp_docker
@@ -80,7 +79,6 @@ Output results will be written there
 Potential Benefits 
 
 This BBP docker image requires no installation, other than the docker run command. Also, the docker images are now portable to other computers. Potentially, large BBP calculations could be distributed among multiple instances running simultaneously.
-
 
 Potential Limitations
 
