@@ -1,50 +1,57 @@
 # bbp_docker
-tools for evaluating a dockerized version of the SCEC Broadband Platform
-bbp_docker: These codes create and run a dockerized version of the python3 version.
+This repo contains tools used when evaluating a dockerized version of the SCEC Broadband Platform
+bbp_docker: These codes create and run a dockerized version of the bbp,
 
-## Host root
+# Overview of Building a new Docker image from the BBP.
+## Host root on Development Computer
 On a mac start at:
 /Users/maechlin
 
-## retrieve this repo of bbp docker tools
+## Retrieve this repo. This repo contains bbp docker tools
 git clone https://github.com/pjmaechling/bbp_docker.git
 
-## retrieve the desired version of the bbp platform
-cd into /Users/maechlin/bbp_docker
+This creates a directory call bbp_docker. On my Mac as:
+/Users/maechlin/bbp_docker
+
+## Retrieve the desired version of the bbp platform
+<pre>
+Move into the bbp_docker directory on the development computer.
+cd /Users/maechlin/bbp_docker
 
 The git retrieval command for the starting branch of BBP:
-<pre>
-  git clone -b 19.8.0-python3 --single-branch https://github.com/SCECcode/bbp.git
+$git clone --single-branch --branch dev https://github.com/sceccode/bbp.git
 </pre>
 
-## Install inputs
-This repo contains a file setup_inputs.txt.
-This is a list of inputs to the bbp install script.
-See the wiki page to see list of inputs to bbp install.
+## BBP Command Line Installation Inputs
+This repo contains a file setup_inputs.txt. This is a list of inputs to the bbp install script. Currently, during the installation process, this file is redirected as standard input to the bbp installation script.
+
+See the wiki page to see list of inputs to bbp install, and to interpret the settings in this setup_inputs.txt file.
 https://github.com/pjmaechling/bbp_docker/wiki
 
-Currently, this is redirected as standardinput to the bbp installation script.
-
 ## build.sh script
-The docker file is converted to a docker image when this file is run
+This script contains the "docker build" command. When this script is run, the docker file is converted to a docker image. For larger installations, the docker build process may take multiple hours.
 
+## Usage Model for BBP Docker Installations.
+The User starts docker on their computer. The docker daemon must be running. Then, the User moves to a directory on their computer where they want to run the bbp. Let's say this directory is /Users/maechlin/bbp_docker
 
-## Usage Model
-User starts docker on their computer
-User start bbp_19_8 container on their computer
-In the directory where they started the container, they will use a subdirectory call /target.
-The container will read input files, and write results to this directory
+The user will cd to this directory, and create a subdirectory call /target. As an example:
+/Users/maechlin/bbp_docker/target
+
+The bbp platform will read input files and write results to this ./target directory. File in this directory will be preserved after the Container exits or terminates.
+
+## run_bbp.sh script
+Once the bbp image has been built, it can be run with this script:
+$ run_bbp.sh
+
+This script mounts the ./target subdirectory in the container. It will pull the bbp image specified in this file from a local Docker repo, or from Dockerhub if not found locally. The images are 50GB+, so if they are downloaded from Dockerhub, it may take more than an hour to start up the container. Once the image is cached locally, the container will start up rapidly.
+
+## Once BBP Containers starts up
+The user runs the run_bbp.sh script in terminal window at the command line on their host computer. When they run this script, the command line changes in their terminal window, and the user is presented with a Linux command line prompt. The users should cd into the /app/target directory. The files from their host computer (e.g. the files in /Users/maechlin/bbp_docker/target) will found in this directory. When the users runs the bbp platform from here, the results will be written to subdirectories of /app/target.
 $cd /app/target
+
+## Interaactive BBP Command Line Interface
+Users can invoke the BBP command line interface, and the bbp will ask users a series of questions about the simulation they wish to run. 
 $run_bbp.py
-
-## Potential Benefits
-
-No installation needed Portable to other computers Progrm requires less space Users could retreieve use remove programs
-Potential Limitations
-
-Users must be comfortable running ucvm from a command line interface. This over means they are creating output files, and extracting selected information for plotting.
-Users must work within limits of images and local computers. There are some size ucvm problems that won't run on their laptops, so we need to warn people what the limits are.
-
 
 ## Run Cmd:
 docker run --rm -it --mount type=bind,source="$(pwd)"/target,destination=/app/target  sceccode/bbp_docker:MMDDHHMM
@@ -68,10 +75,19 @@ On host system, user invokes docker run. Expectation is that there is a subdirec
 Input files can be stored there.
 Output results will be written there
 
-# Docker git repos
+## Potential Benefits and Limitations
+
+Potential Benefits 
+
+This BBP docker image requires no installation, other than the docker run command. Also, the docker images are now portable to other computers. Potentially, large BBP calculations could be distributed among multiple instances running simultaneously.
+
+
+Potential Limitations
+
+Users must be comfortable running ucvm from a command line interface. This over means they are creating output files, and extracting selected information for plotting. Users must work within limits of images and local computers. There are some size ucvm problems that won't run on their laptops, so we need to warn people what the limits are.
+
+# Related Docker git repos
 1. [UCVM Docker Wiki](https://github.com/sceccode/ucvm_docker/wiki)
 2. [UCVM Docker README.md](https://github.com/sceccode/ucvm_docker)
-
 3. [BBP Docker Wiki](https://github.com/sceccode/bbp_docker/wiki)
 4. [BBP Docker README.md](https://github.com/sceccode/bbp_docker)
-5. 
