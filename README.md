@@ -18,7 +18,7 @@ Move into the bbp_docker directory on the development computer.
 cd /Users/maechlin/bbp_docker
 
 The git retrieval command for the starting branch of BBP:
-$git clone --single-branch --branch dev https://github.com/sceccode/bbp.git
+$git clone --single-branch --branch 19.8.0-python3-dev https://github.com/sceccode/bbp.git
 </pre>
 
 ## BBP Command Line Installation Inputs
@@ -26,6 +26,16 @@ This repo contains a file setup_inputs.txt. This is a list of inputs to the bbp 
 
 See the wiki page to see list of inputs to bbp install, and to interpret the settings in this setup_inputs.txt file.
 https://github.com/pjmaechling/bbp_docker/wiki
+
+## Stage large files in bbp_docker directory
+So the install script does not wait for the network, the build script assumes
+that required large files are pre-installed in the bbp_docker/ directory.
+The required files include an Anaconda installationa, one regional GT velocity model, and three validation events in that region:
+- Anaconda3-2021.05-Linux-x86_64.sh
+- chino-hills-validation-19.4.0.tar.gz
+- nr-validation-19.4.0.tar.gz
+- labasin500-velocity-model-19.4.0.tar.gz
+- whittier-validation-19.4.0.tar.gz
 
 ## build.sh script
 This script contains the "docker build" command. When this script is run, the docker file is converted to a docker image. For larger installations, the docker build process may take multiple hours.
