@@ -3,7 +3,7 @@
 
 ## The SCEC Broadband Platform (BBP) Docker Images
 
-<a href="http://www.scec.org/research"><img src="https://github.com/sceccode/bbp_docker/wiki/images/bbp_docker_logo.png"></a>
+<a href="http://www.scec.org/research"><img src="https://github.com/sceccode/bbp_docker/wiki/images/SRL_Cover_v8.png"></a>
 
 ## Description: 
 The Southern California Earthquake Center (SCEC) Broadband Platform (BBP) is a software system that can generate 0-20+ Hz seismograms for historical and scenario earthquakes in California, Eastern North America, and Japan using several alternative computational methods.
