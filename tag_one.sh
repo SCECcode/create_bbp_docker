@@ -1,3 +1,3 @@
 #!/bin/sh
-docker tag bbp_19_8:211210 sceccode/bbp_19_8:211210
-docker push sceccode/bbp_19_8:211210
+docker tag bbp_22_4 sceccode/bbp_22_4
+docker push sceccode/bbp_22_4
